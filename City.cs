@@ -28,5 +28,9 @@
         public int Y2030 { get => y2030; }
         public int Y2040 { get => y2040; }
         public int Y2050 { get => y2050; }
+
+        public int Y2010_2050 { get => y2050 - y2010; }
+
+        public bool IsContinousGrowth => y2010 < y2020 && y2020 < y2030 && y2030 < y2040 && y2040 < y2050;
     }
 }

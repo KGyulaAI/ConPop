@@ -8,7 +8,7 @@ namespace ConPop
 {
     class CityDataProvider : ICityMethods
     {
-        List<City> cities = new List<City>();
+        private List<City> cities = new List<City>();
 
         public List<City> Cities { get => cities; }
 
@@ -36,7 +36,15 @@ namespace ConPop
 
         public void SaveToCSV(string path, List<City> cities, string charCode = "UTF-8")
         {
-            throw new NotImplementedException();
+            List<String> sorok = new();
+            sorok.Add("CITY_CODE;CITY_NAME;Y2010;Y2020;Y2030;Y2040;Y2050");
+            foreach (City city in cities)
+            {
+                sorok.Add($"{city.CityCode};{city.CityName};{city.Y2010};{city.Y2020};{city.Y2030};{city.Y2040};{city.Y2050}");
+            }
+
+            File.WriteAllLines(path, sorok);
+
         }
 
         public List<City> Top10City(int year)
